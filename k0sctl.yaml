@@ -30,6 +30,8 @@ spec:
     dynamicConfig: false
     config:
       spec:
+        network:
+          provider: calico
         api:
           externalAddress: 10.1.1.11
           sans:

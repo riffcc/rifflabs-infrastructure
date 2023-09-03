@@ -56,7 +56,7 @@ spec:
                 datasource:
                   Ec2:
                     # Hegel IP
-                    metadata_urls: ["http://10.1.1.24:50061"]
+                    metadata_urls: ["http://10.1.1.25:50061"]
                     strict_id: false
                     apply_full_imds_network_config: false
                     max_wait: 30
@@ -76,11 +76,9 @@ spec:
                 - name: pchq
                   sudo: ["ALL=(ALL) NOPASSWD:ALL"]
                   shell: /bin/bash
-                  ssh_import_id:
-                    - "gh:Zorlin"
-                    - "gh:PC-Admin"
                   ssh_authorized_keys:
                     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXcIkcYMXYY4CFHJv7O6946HDJrh+w4IqFExRSTt7oN wings@trevor"
+                    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO584u1bj3QIb2kHH5651233CKFwOqlG6fDD6T0YanjU pcadmin@stellar"
                 warnings:
                   dsid_missing_source: off
                 runcmd:

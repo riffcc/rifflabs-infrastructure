@@ -1,0 +1,30 @@
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: coresvc
+spec:
+  hosts:
+  - ssh:
+      address: 10.1.1.31
+      user: pchq
+      port: 22
+      keyPath: /Users/wings/.ssh/id_ed25519
+    role: controller+worker
+    noTaints: true
+  - ssh:
+      address: 10.1.1.32
+      user: pchq
+      port: 22
+      keyPath: /Users/wings/.ssh/id_ed25519
+    role: controller+worker
+    noTaints: true
+  - ssh:
+      address: 10.1.1.33
+      user: pchq
+      port: 22
+      keyPath: /Users/wings/.ssh/id_ed25519
+    role: controller+worker
+    noTaints: true
+  k0s:
+    version: 1.27.5+k0s.0
+    dynamicConfig: false

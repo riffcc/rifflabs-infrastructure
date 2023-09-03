@@ -1,0 +1,37 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Hardware
+metadata:
+  name: prod-haproxy02
+  namespace: tink-system
+spec:
+  disks:
+    - device: /dev/sda
+  metadata:
+    facility:
+      facility_code: onprem
+    manufacturer:
+      slug: proxmox
+    instance:
+      userdata: ""
+      hostname: "prod-haproxy02"
+      id: "06:68:03:b7:06:e5"
+      operating_system:
+        distro: "debian"
+        os_slug: "debian_12"
+        version: "12"
+  interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: prod-haproxy02
+        ip:
+          address: 10.1.1.12
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 06:68:03:b7:06:e5
+        name_servers:
+          - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true

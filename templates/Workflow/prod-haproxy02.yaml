@@ -1,0 +1,10 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Workflow
+metadata:
+  name: wf-prod-haproxy02
+  namespace: tink-system
+spec:
+  templateRef: debian12
+  hardwareRef: prod-haproxy02
+  hardwareMap:
+    device_1: 06:68:03:b7:06:e5

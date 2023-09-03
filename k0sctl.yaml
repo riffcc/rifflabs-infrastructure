@@ -28,3 +28,14 @@ spec:
   k0s:
     version: 1.27.5+k0s.0
     dynamicConfig: false
+    config:
+      spec:
+        api:
+          externalAddress: 10.1.1.11
+          sans:
+          - 10.1.1.11
+          - 10.1.1.12
+          - 10.1.1.13
+          - 10.1.1.101
+          - 10.1.1.102
+          - 10.1.1.103

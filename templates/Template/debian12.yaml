@@ -56,7 +56,7 @@ spec:
                 datasource:
                   Ec2:
                     # Hegel IP
-                    metadata_urls: ["http://10.1.1.25:50061"]
+                    metadata_urls: ["http://10.1.1.24:50061"]
                     strict_id: false
                     apply_full_imds_network_config: false
                     max_wait: 30

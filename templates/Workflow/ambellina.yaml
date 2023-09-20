@@ -1,0 +1,10 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Workflow
+metadata:
+  name: wf-ambellina
+  namespace: tink-system
+spec:
+  templateRef: debian12-nvme0n1
+  hardwareRef: ambellina
+  hardwareMap:
+    device_1: a8:a1:59:fa:dc:ca

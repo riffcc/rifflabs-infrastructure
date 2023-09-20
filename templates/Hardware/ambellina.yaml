@@ -1,0 +1,37 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Hardware
+metadata:
+  name: ambellina
+  namespace: tink-system
+spec:
+  disks:
+    - device: /dev/nvme0n1
+  metadata:
+    facility:
+      facility_code: onprem
+    manufacturer:
+      slug: custom
+    instance:
+      userdata: ""
+      hostname: "ambellina"
+      id: "a8:a1:59:fa:dc:ca"
+      operating_system:
+        distro: "debian"
+        os_slug: "debian_12"
+        version: "12"
+  interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: ambellina
+        ip:
+          address: 10.1.1.154
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: a8:a1:59:fa:dc:ca
+        name_servers:
+          - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true

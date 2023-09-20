@@ -1,0 +1,103 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Template
+metadata:
+  name: debian12-nvme0n1
+  namespace: tink-system
+spec:
+  data: |
+    version: "0.1"
+    name: debian12
+    global_timeout: 1800
+    tasks:
+      - name: "os-installation"
+        worker: "{{.device_1}}"
+        volumes:
+          - /dev:/dev
+          - /dev/console:/dev/console
+          - /lib/firmware:/lib/firmware:ro
+        actions:
+          - name: "stream-debian-image"
+            image: quay.io/tinkerbell-actions/image2disk:v1.0.0
+            timeout: 600
+            environment:
+              DEST_DISK: /dev/nvme0n1
+              # Hegel IP
+              IMG_URL: "http://10.1.1.151:80/images/debian-12-amd64.raw.gz"
+              COMPRESSED: true
+          - name: "grow-partition"
+            image: quay.io/tinkerbell-actions/cexec:v1.0.0
+            timeout: 90
+            environment:
+              BLOCK_DEVICE: /dev/nvme0n1p1
+              FS_TYPE: ext4
+              CHROOT: y
+              CMD_LINE: "growpart /dev/nvme0n1 1"
+          - name: "resize2fs"
+            image: quay.io/tinkerbell-actions/cexec:v1.0.0
+            timeout: 90
+            environment:
+              BLOCK_DEVICE: /dev/nvme0n1p1
+              FS_TYPE: ext4
+              CHROOT: y
+              CMD_LINE: "resize2fs /dev/nvme0n1p1"
+          - name: "add-tink-cloud-init-config"
+            image: quay.io/tinkerbell-actions/writefile:v1.0.0
+            timeout: 90
+            environment:
+              DEST_DISK: /dev/nvme0n1p1
+              FS_TYPE: ext4
+              DEST_PATH: /etc/cloud/cloud.cfg.d/10_tinkerbell.cfg
+              UID: 0
+              GID: 0
+              MODE: 0600
+              DIRMODE: 0700
+              CONTENTS: |
+                datasource_list: [Ec2]
+                datasource:
+                  Ec2:
+                    # Hegel IP
+                    metadata_urls: ["http://10.1.1.24:50061"]
+                    strict_id: false
+                    apply_full_imds_network_config: false
+                    max_wait: 30
+                    timeout: 10
+                system_info:
+                  default_user:
+                    name: pchq
+                    groups: [wheel, adm, sudo]
+                    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+                    shell: /bin/bash
+                package_upgrade: true
+                packages:
+                  - htop
+                  - git
+                  - qemu-guest-agent
+                users:
+                - name: pchq
+                  sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+                  shell: /bin/bash
+                  ssh_authorized_keys:
+                    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXcIkcYMXYY4CFHJv7O6946HDJrh+w4IqFExRSTt7oN wings@trevor"
+                    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO584u1bj3QIb2kHH5651233CKFwOqlG6fDD6T0YanjU pcadmin@stellar"
+                warnings:
+                  dsid_missing_source: off
+                runcmd:
+                  - [ systemctl, start, qemu-guest-agent ]
+          - name: "add-tink-cloud-init-ds-config"
+            image: quay.io/tinkerbell-actions/writefile:v1.0.0
+            timeout: 90
+            environment:
+              DEST_DISK: /dev/nvme0n1p1
+              FS_TYPE: ext4
+              DEST_PATH: /etc/cloud/ds-identify.cfg
+              UID: 0
+              GID: 0
+              MODE: 0600
+              DIRMODE: 0700
+              CONTENTS: |
+                datasource: Ec2
+          - name: "reboot"
+            image: public.ecr.aws/l0g8r8j6/tinkerbell/hub/reboot-action:latest
+            timeout: 90
+            volumes:
+            - /worker:/worker

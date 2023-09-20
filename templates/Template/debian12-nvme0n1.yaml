@@ -78,6 +78,7 @@ spec:
                   shell: /bin/bash
                   ssh_authorized_keys:
                     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXcIkcYMXYY4CFHJv7O6946HDJrh+w4IqFExRSTt7oN wings@trevor"
+                    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6vPhGaO6fVdmS6IhAb+A+MXlkAsBN2BeIVJQaD7Vqf wings@chase"
                     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO584u1bj3QIb2kHH5651233CKFwOqlG6fDD6T0YanjU pcadmin@stellar"
                 warnings:
                   dsid_missing_source: off

@@ -1,0 +1,37 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Hardware
+metadata:
+  name: prod-ipfs01
+  namespace: tink-system
+spec:
+  disks:
+    - device: /dev/sda
+  metadata:
+    facility:
+      facility_code: onprem
+    manufacturer:
+      slug: proxmox
+    instance:
+      userdata: ""
+      hostname: "prod-ipfs01"
+      id: "d6:47:2c:12:54:d2"
+      operating_system:
+        distro: "debian"
+        os_slug: "debian_12"
+        version: "12"
+  interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: prod-ipfs01
+        ip:
+          address: 10.1.1.80
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: d6:47:2c:12:54:d2
+        name_servers:
+          - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true

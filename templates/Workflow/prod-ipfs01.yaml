@@ -1,0 +1,10 @@
+apiVersion: "tinkerbell.org/v1alpha1"
+kind: Workflow
+metadata:
+  name: wf-prod-ipfs01
+  namespace: tink-system
+spec:
+  templateRef: debian12
+  hardwareRef: prod-ipfs01
+  hardwareMap:
+    device_1: d6:47:2c:12:54:d2

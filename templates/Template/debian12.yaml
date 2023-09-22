@@ -63,7 +63,7 @@ spec:
                     timeout: 10
                 system_info:
                   default_user:
-                    name: pchq
+                    name: riff
                     groups: [wheel, adm, sudo]
                     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
                     shell: /bin/bash
@@ -73,7 +73,7 @@ spec:
                   - git
                   - qemu-guest-agent
                 users:
-                - name: pchq
+                - name: riff
                   sudo: ["ALL=(ALL) NOPASSWD:ALL"]
                   shell: /bin/bash
                   ssh_authorized_keys:

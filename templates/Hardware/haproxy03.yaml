@@ -1,7 +1,7 @@
 apiVersion: "tinkerbell.org/v1alpha1"
 kind: Hardware
 metadata:
-  name: prod-haproxy03
+  name: haproxy03
   namespace: tink-system
 spec:
   disks:
@@ -13,7 +13,7 @@ spec:
       slug: proxmox
     instance:
       userdata: ""
-      hostname: "prod-haproxy03"
+      hostname: "haproxy03"
       id: "ca:f1:bd:d5:ef:fe"
       operating_system:
         distro: "debian"
@@ -22,7 +22,7 @@ spec:
   interfaces:
     - dhcp:
         arch: x86_64
-        hostname: prod-haproxy03
+        hostname: haproxy03
         ip:
           address: 10.1.1.13
           gateway: 10.1.1.1

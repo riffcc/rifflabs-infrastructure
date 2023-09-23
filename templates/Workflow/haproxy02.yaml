@@ -4,7 +4,7 @@ metadata:
   name: wf-haproxy02
   namespace: tink-system
 spec:
-  templateRef: 
+  templateRef: debian12
   hardwareRef: haproxy02
   hardwareMap:
     device_1: 06:68:03:b7:06:e5

@@ -104,7 +104,9 @@ spec:
               BLOCK_DEVICE: /dev/sda1
               FS_TYPE: ext4
               CHROOT: y
-              CMD_LINE: "awk 'BEGIN { found=0 } (!/^#/) && /^send dhcp-client-identifier/ { print "send dhcp-client-identifier \"\""; found=1; next } 1; END { if (found==0) print "send dhcp-client-identifier \"\"" }' /etc/dhcp/dhclient.conf > /etc/dhcp/dhclient.conf.new && mv /etc/dhcp/dhclient.conf.new /etc/dhcp/dhclient.conf"
+              DEFAULT_INTERPRETER: "/bin/sh -c"
+              CMD_LINE: >
+                awk 'BEGIN { found=0 } (!/^#/) && /^send dhcp-client-identifier/ { print "send dhcp-client-identifier \"\""; found=1; next } 1; END { if (found==0) print "send dhcp-client-identifier \"\"" }' /etc/dhcp/dhclient.conf > /etc/dhcp/dhclient.conf.new && mv /etc/dhcp/dhclient.conf.new /etc/dhcp/dhclient.conf
           - name: "reboot"
             image: public.ecr.aws/l0g8r8j6/tinkerbell/hub/reboot-action:latest
             timeout: 90

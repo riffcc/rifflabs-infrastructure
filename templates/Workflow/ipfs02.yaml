@@ -1,10 +1,10 @@
 apiVersion: "tinkerbell.org/v1alpha1"
 kind: Workflow
 metadata:
-  name: wf-auth02
+  name: wf-ipfs02
   namespace: tink-system
 spec:
   templateRef: debian12
-  hardwareRef: auth01
+  hardwareRef: ipfs02
   hardwareMap:
-    device_1: 8a:2d:e0:7c:2b:1c
+    device_1: 26:24:da:4d:d8:27

@@ -1,6 +1,7 @@
 releases:
-  - name: coresvc-vm
+  - name: tinkersail-machines
     namespace: tink-system
-    chart: ./charts/tinkermatic
+    chart: ./charts/tinkersail
     values:
       - machines/haproxy.yaml
+      - machines/metal.yaml

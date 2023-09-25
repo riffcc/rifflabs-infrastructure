@@ -4,4 +4,4 @@ releases:
     chart: ./charts/tinkersail
     values:
       - machines/haproxy.yaml
-      - machines/metal.yaml
+      - machines/lotus-worker.yaml

@@ -12,8 +12,8 @@ machines:
     macAddress: "0E:17:A4:5C:5B:44"
     ipAddress: "10.1.1.11"
   - hostname: haproxy02
-    macAddress: "0E:17:A4:5C:5B:44"
+    macAddress: "06:68:03:B7:06:E5"
     ipAddress: "10.1.1.12"
   - hostname: haproxy03
-    macAddress: "0E:17:A4:5C:5B:44"
+    macAddress: "CA:F1:BD:D5:EF:FE"
     ipAddress: "10.1.1.13"

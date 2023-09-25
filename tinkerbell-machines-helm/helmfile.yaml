@@ -1,0 +1,6 @@
+releases:
+  - name: coresvc-vm
+    namespace: tink-system
+    chart: ./charts/tinkermatic
+    values:
+      - machines/haproxy.yaml

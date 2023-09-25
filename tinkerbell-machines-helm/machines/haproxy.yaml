@@ -1,0 +1,19 @@
+# Defaults for this set of machines
+defaults:
+  os:
+    name: debian
+    os_slug: debian_12
+    version: 12
+  tags: production
+
+# The machines to create
+machines:
+  - hostname: haproxy01
+    macAddress: "0E:17:A4:5C:5B:44"
+    ipAddress: "10.1.1.11"
+  - hostname: haproxy02
+    macAddress: "0E:17:A4:5C:5B:44"
+    ipAddress: "10.1.1.12"
+  - hostname: haproxy03
+    macAddress: "0E:17:A4:5C:5B:44"
+    ipAddress: "10.1.1.13"

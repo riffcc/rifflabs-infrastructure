@@ -20,7 +20,7 @@ spec:
     instance:
       userdata: ""
       hostname: "{{ $machine.hostname }}"
-      id: "{{ $machine.macAddress }}"
+      id: "{{ $machine.macAddress | lower }}"
       operating_system:
         distro: "{{ $machine.os.distro }}"
         os_slug: "{{ $machine.os.os_slug }}"
@@ -34,7 +34,7 @@ spec:
           gateway: {{ $machine.gateway }}
           netmask: {{ $machine.netmask }}
         lease_time: 86400
-        mac: {{ $machine.macAddress }}
+        mac: {{ $machine.macAddress | lower }}
         name_servers:
         {{- range $machine.nameServers }}
           - {{ . | quote }}

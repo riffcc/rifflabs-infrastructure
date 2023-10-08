@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: acme-prod
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory  # Add your ACME server URL here
+    privateKeySecretRef:
+      name: acme-prod-private-key  # Name of the Kubernetes secret to store the ACME account private key
+    solvers:
+    - dns01:
+        acmeDNS:
+          host: https://acme.riff.cc
+          accountSecretRef:
+            name: acme-dns
+            key: acmedns.json

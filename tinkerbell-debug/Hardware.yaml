@@ -1,0 +1,374 @@
+apiVersion: v1
+items:
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: ambellina
+    namespace: tink-system
+    resourceVersion: "5681"
+    uid: 42a9d855-80c9-4df7-b2b3-3e13723e211a
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: ambellina
+        ip:
+          address: 10.1.1.154
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: a8:a1:59:fa:dc:ca
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: ambellina
+        id: a8:a1:59:fa:dc:ca
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: custom
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: coresvc-k8s02
+    namespace: tink-system
+    resourceVersion: "5683"
+    uid: d8440373-9ce7-4666-8cbb-ebf9453529a2
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: coresvc-k8s02
+        ip:
+          address: 10.1.1.32
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: de:f5:dc:cf:1d:a4
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: coresvc-k8s02
+        id: de:f5:dc:cf:1d:a4
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: haproxy01
+    namespace: tink-system
+    resourceVersion: "5678"
+    uid: a744eb58-999b-4a4c-bc0d-7872d326f699
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: haproxy01
+        ip:
+          address: 10.1.1.11
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 0e:17:a4:5c:5b:44
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: haproxy01
+        id: 0e:17:a4:5c:5b:44
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: haproxy02
+    namespace: tink-system
+    resourceVersion: "5679"
+    uid: aff5ed66-3ca2-461e-9d3b-cd0d227f83c1
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: haproxy02
+        ip:
+          address: 10.1.1.12
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 06:68:03:b7:06:e5
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: haproxy02
+        id: 06:68:03:b7:06:e5
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: haproxy03
+    namespace: tink-system
+    resourceVersion: "5677"
+    uid: 82dc8765-9457-4804-bf73-40b151906cdb
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: haproxy03
+        ip:
+          address: 10.1.1.13
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: ca:f1:bd:d5:ef:fe
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: haproxy03
+        id: ca:f1:bd:d5:ef:fe
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: netbird01
+    namespace: tink-system
+    resourceVersion: "5680"
+    uid: b5279bb7-f81c-4cf6-8b95-1061538f1e66
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: netbird01
+        ip:
+          address: 10.1.1.7
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 76:c4:ae:50:3d:a1
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: netbird01
+        id: 76:c4:ae:50:3d:a1
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: netbird02
+    namespace: tink-system
+    resourceVersion: "5682"
+    uid: dee028f9-27a2-416a-b5f0-3c97b417a2e1
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: netbird02
+        ip:
+          address: 10.1.1.8
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 22:89:ca:79:12:f6
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: netbird02
+        id: 22:89:ca:79:12:f6
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+- apiVersion: tinkerbell.org/v1alpha1
+  kind: Hardware
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: tink-flow-release
+      meta.helm.sh/release-namespace: tink-system
+    creationTimestamp: "2023-10-10T00:38:36Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: netbird03
+    namespace: tink-system
+    resourceVersion: "5676"
+    uid: eb7cea4b-f7b7-4938-9b70-7ff9eca64a5c
+  spec:
+    disks:
+    - device: /dev/sda
+    interfaces:
+    - dhcp:
+        arch: x86_64
+        hostname: netbird03
+        ip:
+          address: 10.1.1.9
+          gateway: 10.1.1.1
+          netmask: 255.255.0.0
+        lease_time: 86400
+        mac: 6e:7b:eb:5d:88:fd
+        name_servers:
+        - 10.1.1.53
+        uefi: true
+      netboot:
+        allowPXE: true
+        allowWorkflow: true
+    metadata:
+      facility:
+        facility_code: onprem
+      instance:
+        hostname: netbird03
+        id: 6e:7b:eb:5d:88:fd
+        operating_system:
+          distro: debian
+          os_slug: debian_12
+          version: "12"
+        userdata: ""
+      manufacturer:
+        slug: proxmox
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

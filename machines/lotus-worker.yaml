@@ -1,0 +1,16 @@
+# Defaults for this set of machines
+defaults:
+  os:
+    name: debian
+    os_slug: debian_12
+    version: 12
+  tags: production
+  manufacturer:
+    slug: custom
+
+# The machines to create
+machines:
+  - hostname: ambellina
+    macAddress: "a8:a1:59:fa:dc:ca"
+    ipAddress: "10.1.1.154"
+    bootDevice: /dev/nvme0n1

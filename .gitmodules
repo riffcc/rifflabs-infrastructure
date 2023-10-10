@@ -4,6 +4,3 @@
 [submodule "tinkerbell-charts"]
 	path = tinkerbell-charts
 	url = https://github.com/riffcc/tinkerbell-charts
-[submodule "playbooks/haproxy-cluster-playbook"]
-	path = playbooks/haproxy-cluster-playbook
-	url = https://github.com/riffcc/haproxy-cluster-playbook.git

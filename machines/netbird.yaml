@@ -9,11 +9,11 @@ defaults:
 # The machines to create
 machines:
   - hostname: netbird01
-    macAddress: "76:C4:AE:50:3D:A1"
-    ipAddress: "10.1.1.7"
+    macAddress: "0E:17:A4:5C:5B:44"
+    ipAddress: "10.1.1.11"
   - hostname: netbird02
-    macAddress: "22:89:CA:79:12:F6"
-    ipAddress: "10.1.1.8"
+    macAddress: "06:68:03:B7:06:E5"
+    ipAddress: "10.1.1.12"
   - hostname: netbird03
-    macAddress: "6E:7B:EB:5D:88:FD"
-    ipAddress: "10.1.1.9"
+    macAddress: "CA:F1:BD:D5:EF:FE"
+    ipAddress: "10.1.1.13"

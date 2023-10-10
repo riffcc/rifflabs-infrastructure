@@ -11,6 +11,10 @@ defaults:
 # The machines to create
 machines:
   - hostname: ambellina
-    macAddress: "a8:a1:59:fa:dc:ca"
+    macAddress: "d0:50:99:dd:39:0f"
     ipAddress: "10.1.1.154"
-    bootDevice: /dev/nvme0n1
+    bootDisk: /dev/nvme0n1
+  - hostname: al
+    macAddress: "d0:50:99:dd:37:d9"
+    ipAddress: "10.1.1.156"
+    bootDisk: /dev/nvme0n1

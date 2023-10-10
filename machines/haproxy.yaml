@@ -9,7 +9,7 @@ defaults:
 # The machines to create
 machines:
   - hostname: haproxy01
-    macAddress: "0E:17:A4:5C:5B:44"
+    macAddress: "2E:B8:52:0B:70:86"
     ipAddress: "10.1.1.11"
   - hostname: haproxy02
     macAddress: "06:68:03:B7:06:E5"

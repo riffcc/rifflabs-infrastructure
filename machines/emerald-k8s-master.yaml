@@ -7,10 +7,17 @@ defaults:
   tags: production
   manufacturer:
     slug: custom
+  bootDisk: /dev/sda
 
 # The machines to create
 machines:
   - hostname: emerald-k8s-m01
     macAddress: "12:CC:9B:3F:84:98"
     ipAddress: "10.1.1.61"
-    bootDisk: /dev/sda
+  - hostname: emerald-k8s-m02
+    macAddress: "42:BC:97:BF:6F:23"
+    ipAddress: "10.1.1.62"
+  - hostname: emerald-k8s-m03
+    macAddress: "CE:44:7F:D3:F2:E6"
+    ipAddress: "10.1.1.63"
+

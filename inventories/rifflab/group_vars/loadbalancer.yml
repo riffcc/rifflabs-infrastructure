@@ -1,0 +1,219 @@
+---
+# Name of the Corosync cluster. Purely cosmetic, but changing it once you've built your cluster is fairly involved.
+corosync_cluster_name: 'riff'
+# Set the network interface for Corosync to bind to. Mandatory.
+corosync_bindnet_interface: 'enp6s18'
+
+# Set floating IP mode. "single" will provision a single IP address, whereas "multi" will provision your choice of IP addresses.
+# You must set floating_ip_start to the first IP address you want to provision as a floating IP.
+# If you choose "multi", you must also specify the number of IP addresses to provision.
+floating_ip_mode: "multi"
+floating_ip_start: "10.1.1.101"
+floating_ip_count: 3
+
+# Set pacemaker cluster resources. Don't include the virtual IP resources here, they will be generated automatically.
+my_pacemaker_cluster_resources:
+  - resource_id: 'loadbalancer'
+    action: 'create'
+    provider: 'lsb:haproxy'
+    op: 'monitor'
+    op_options:
+      - 'timeout=5s'
+      - 'interval=5s'
+      - 'clone'
+
+# HAProxy settings
+haproxy_stats: true
+haproxy_stats_port: 8080
+haproxy_stats_socket: "/var/run/haproxy/admin.sock level admin mode 660"
+
+# Frontends
+haproxy_frontends:
+  - name: http
+    address: "*"
+    port: 80
+    mode: http
+    default_backend: http_blackhole
+    custom_config: |
+      tcp-request inspect-delay 5s
+      acl jellyfin hdr(host) -i jelly.riff.cc
+      use_backend jellyfin if jellyfin
+      acl acme hdr(host) -i acme.riff.cc
+      use_backend acme if acme
+      acl emerald hdr(host) -i emerald.riff.cc
+      use_backend emerald_ingress if emerald
+      acl requests hdr(host) -i requests.riff.cc
+      use_backend emerald_ingress if requests
+
+  - name: https
+    address: "*"
+    port: 443
+    mode: http
+    ssl: true
+    option:
+      - "httplog"
+      - "tcplog"
+    crts:
+      - "/etc/haproxy/certs/"
+    default_backend: http_blackhole
+    custom_config: |
+      tcp-request inspect-delay 5s
+      acl jellyfin hdr(host) -i jelly.riff.cc
+      use_backend jellyfin if jellyfin
+      acl acme hdr(host) -i acme.riff.cc
+      use_backend acme if acme
+      acl emerald hdr(host) -i emerald.riff.cc
+      use_backend emerald_ingress if emerald
+      acl requests hdr(host) -i requests.riff.cc
+      use_backend emerald_ingress if requests
+  - name: coresvc_kubeAPI
+    address: "*"
+    port: 6443
+    mode: tcp
+    default_backend: coresvc_kubeAPI_backend
+  - name: coresvc_konnectivity
+    address: "*"
+    port: 8132
+    mode: tcp
+    default_backend: coresvc_konnectivity_backend
+  - name: coresvc_controllerJoinAPI
+    address: "*"
+    port: 9443
+    mode: tcp
+    default_backend: coresvc_controllerJoinAPI_backend
+  - name: emerald_kubeAPI
+    address: "*"
+    port: 6444
+    mode: tcp
+    default_backend: emerald_kubeAPI_backend
+
+# Backends
+haproxy_backends:
+  - name: acme
+    port: 443
+    mode: http
+    options:
+      - 'ssl verify none'
+      - 'check'
+    httpcheck: true
+    http_check:
+      send:
+        method: GET
+        uri: /health
+      expect: status 200
+    servers:
+      - name: acme-dns01
+        address: acme-dns01.riff.cc
+    custom_config: |
+      http-request set-header Host acme.riff.cc
+  - name: jellyfin
+    port: 8096
+    mode: http
+    options:
+      - 'check'
+    httpcheck: true
+    http_check:
+      send:
+        method: GET
+        uri: /health
+      expect: string Healthy
+    servers:
+      - name: creature
+        address: 10.1.1.153
+  - name: http_blackhole
+    httpcheck: false
+    port: 6666
+    mode: http
+    servers:
+      - name: blackhole
+        address: 127.0.0.1
+  - name: coresvc_kubeAPI_backend
+    httpcheck: false
+    balance: roundrobin
+    port: 6443
+    mode: tcp
+    options:
+      - 'check'
+      - 'check-ssl'
+      - 'verify none'
+    servers:
+      - name: coresvc-k8s01
+        address: 10.1.1.31
+      - name: coresvc-k8s02
+        address: 10.1.1.32
+      - name: coresvc-k8s03
+        address: 10.1.1.33
+  - name: coresvc_konnectivity_backend
+    httpcheck: false
+    balance: roundrobin
+    port: 8132
+    mode: tcp
+    options:
+      - 'check'
+      - 'check-ssl'
+      - 'verify none'
+    servers:
+      - name: coresvc-k8s01
+        address: 10.1.1.31
+      - name: coresvc-k8s02
+        address: 10.1.1.32
+      - name: coresvc-k8s03
+        address: 10.1.1.33
+  - name: coresvc_controllerJoinAPI_backend
+    httpcheck: false
+    balance: roundrobin
+    port: 9443
+    mode: tcp
+    options:
+      - 'check'
+      - 'check-ssl'
+      - 'verify none'
+    servers:
+      - name: coresvc-k8s01
+        address: 10.1.1.31
+      - name: coresvc-k8s02
+        address: 10.1.1.32
+      - name: coresvc-k8s03
+        address: 10.1.1.33
+  - name: emerald_kubeAPI_backend
+    httpcheck: false
+    balance: roundrobin
+    port: 6443
+    mode: tcp
+    options:
+      - 'check'
+      - 'check-ssl'
+      - 'verify none'
+    servers:
+      - name: emerald-k8s-m01
+        address: 10.1.1.61
+      - name: emerald-k8s-m02
+        address: 10.1.1.62
+      - name: emerald-k8s-m03
+        address: 10.1.1.63
+  - name: emerald_ingress
+    httpcheck: false
+    balance: roundrobin
+    port: 443
+    mode: http
+    options:
+      - 'ssl verify none'
+      - 'check'
+    servers:
+      - name: nginx-ingress-ip
+        address: 10.1.1.110
+
+# Other pacemaker settings, leave them alone unless you have a good reason to change them.
+corosync_expected_votes: "{{ ( groups[pacemaker_cluster_group]|count /2 ) | round (0, 'ceil') | int }}"
+pacemaker_cluster_group: 'loadbalancer'
+pacemaker_cluster_settings:
+  - property: 'start-failure-is-fatal'
+    value: 'false'
+  - property: 'pe-warn-series-max'
+    value: 1000
+  - property: 'pe-input-series-max'
+    value: 1000
+  - property: 'pe-error-series-max'
+    value: 1000
+  - property: 'cluster-recheck-interval'
+    value: 5min

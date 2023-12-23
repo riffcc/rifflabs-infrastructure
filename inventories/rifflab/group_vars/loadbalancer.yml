@@ -54,7 +54,7 @@ haproxy_frontends:
       - "httplog"
       - "tcplog"
     crts:
-      - "/etc/haproxy/certs/"
+      - "/etc/haproxy/certs/ alpn h2,http/1.1"
     default_backend: http_blackhole
     custom_config: |
       tcp-request inspect-delay 5s
@@ -81,6 +81,11 @@ haproxy_frontends:
     port: 9443
     mode: tcp
     default_backend: coresvc_controllerJoinAPI_backend
+  - name: emerald_registration
+    address: "*"
+    port: 9345
+    mode: tcp
+    default_backend: emerald_registration_backend
   - name: emerald_kubeAPI
     address: "*"
     port: 6444
@@ -107,9 +112,10 @@ haproxy_backends:
     custom_config: |
       http-request set-header Host acme.riff.cc
   - name: jellyfin
-    port: 8096
+    port: 8920
     mode: http
     options:
+      - 'ssl verify none'
       - 'check'
     httpcheck: true
     http_check:
@@ -119,7 +125,7 @@ haproxy_backends:
       expect: string Healthy
     servers:
       - name: creature
-        address: 10.1.1.153
+        address: creature.riff.cc
   - name: http_blackhole
     httpcheck: false
     port: 6666
@@ -175,6 +181,22 @@ haproxy_backends:
         address: 10.1.1.32
       - name: coresvc-k8s03
         address: 10.1.1.33
+  - name: emerald_registration_backend
+    httpcheck: false
+    balance: roundrobin
+    port: 9345
+    mode: tcp
+    options:
+      - 'check'
+      - 'check-ssl'
+      - 'verify none'
+    servers:
+      - name: emerald-k8s-m01
+        address: 10.1.1.61
+      - name: emerald-k8s-m02
+        address: 10.1.1.62
+      - name: emerald-k8s-m03
+        address: 10.1.1.63
   - name: emerald_kubeAPI_backend
     httpcheck: false
     balance: roundrobin

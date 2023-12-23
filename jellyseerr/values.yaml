@@ -3,7 +3,9 @@ operator:
     enabled: false
 ingress:
   main:
-    addTraefikAnnotations: false
+    integrations:
+      traefik:
+        enabled: false
     enabled: true
     ingressClassName: nginx
     annotations:
@@ -16,4 +18,4 @@ ingress:
     tls:
     - secretName: requests-tls-secret
       hosts:
-      - "*.riff.cc"
+      - "requests.riff.cc"

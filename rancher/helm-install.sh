@@ -1,5 +1,5 @@
 
-helm upgrade --install rancher rancher-stable/rancher \
+helm upgrade --install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.riff.cc \
   --set replicas=3 \

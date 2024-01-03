@@ -1,0 +1,10 @@
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: consul-agent-secret
+  namespace: consul
+  annotations:
+    kubernetes.io/service-account.name: consul-agent
+type: kubernetes.io/service-account-token
+EOF

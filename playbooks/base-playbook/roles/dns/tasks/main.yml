@@ -1,0 +1,15 @@
+---
+- name: Ensure systemd-resolved is installed
+  package:
+    name: systemd-resolved
+    state: present
+
+- name: Ensure systemd-resolved is configured with the local DNS servers
+  community.general.ini_file:
+    path: /etc/systemd/resolved.conf
+    section: Resolve
+    option: DNS
+    values: "{{ dns_servers }}"
+    mode: '0600'
+    state: present
+  notify: Restart systemd-resolved

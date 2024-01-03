@@ -12,8 +12,8 @@ features:
 
 controlPlane:
   hosts:
-    - privateAddress: '10.1.1.61'
-      sshUsername: riff
+#    - privateAddress: '10.1.1.61'
+#      sshUsername: riff
     - privateAddress: '10.1.1.62'
       sshUsername: riff
     - privateAddress: '10.1.1.63'
@@ -21,12 +21,12 @@ controlPlane:
 
 staticWorkers:
   hosts:
-    - privateAddress: '10.1.1.154'
-      sshUsername: riff
-    - privateAddress: '10.1.1.155'
-      sshUsername: riff
-    - privateAddress: '10.1.1.156'
-      sshUsername: riff
+#    - privateAddress: '10.1.1.154'
+#      sshUsername: riff
+#    - privateAddress: '10.1.1.155'
+#      sshUsername: riff
+#    - privateAddress: '10.1.1.156'
+#      sshUsername: riff
 
 # Provide the external address of your load balancer or the public addresses of
 # the first control plane nodes.

@@ -1,4 +1,0 @@
-[loadbalancer]
-haproxy01.riff.cc ansible_user=riff
-haproxy02.riff.cc ansible_user=riff
-haproxy03.riff.cc ansible_user=riff

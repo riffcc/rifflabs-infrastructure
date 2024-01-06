@@ -1,0 +1,43 @@
+---
+- name: Use the user module to get the information about the current user
+# TODO: make this dynamic instead of hardcoding the user
+  user:
+    name: "riff"
+    state: present
+  register: user_details
+  check_mode: true
+
+- name: Ensure ~/.ssh directory exists
+  ansible.builtin.file:
+    path: "{{ user_details.home }}/.ssh"
+    state: directory
+    mode: '0700'
+    owner: "{{ user_details.name }}"
+    group: "{{ user_details.name }}"
+
+- name: Fetch keys from GitHub URLs and store in a variable
+  uri:
+    url: "{{ item }}"
+    return_content: yes
+  register: authorized_keys_content
+  with_items:
+    - https://github.com/zorlin.keys
+    - https://github.com/michatinkers.keys
+
+- name: Join authorized_keys_content in memory
+  set_fact:
+    combined_keys: "{{ authorized_keys_content.results | map(attribute='content') | select('string') | reject('equalto', '') | join('\n') }}"
+
+- name: Validate that there is at least 1 key in combined_keys
+  assert:
+    that:
+      - combined_keys is defined
+      - combined_keys | length > 0
+
+- name: Write combined_keys to ~/.ssh/authorized_keys
+  ansible.builtin.copy:
+    dest: "{{ user_details.home }}/.ssh/authorized_keys"
+    content: "{{ combined_keys }}"
+    owner: "{{ user_details.name }}"
+    group: "{{ user_details.name }}"
+    mode: '0600'

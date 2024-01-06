@@ -5,11 +5,12 @@
 
   roles:
     - dns
-    # - ntp
+    - root-user
+    - riff-user
+    - geerlingguy.ntp
+    - sshd
     # - sssd-ldap
     # - moosefs-mount
-    # - root-user
-    # - riff-user
     # - sshd
     # - sudo
     # - utils

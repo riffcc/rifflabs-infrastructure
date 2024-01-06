@@ -1,0 +1,11 @@
+---
+dns_servers:
+  - "10.1.1.151"
+  - "10.1.1.152"
+  - "10.1.1.153"
+
+ntp_package: chrony
+ntp_timezone: Australia/Perth
+ntp_daemon: chrony
+ntp_manage_config: true
+ntp_config_file: /etc/chrony/chrony.conf

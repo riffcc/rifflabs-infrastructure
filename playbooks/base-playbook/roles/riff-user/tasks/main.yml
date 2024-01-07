@@ -23,6 +23,7 @@
   with_items:
     - https://github.com/zorlin.keys
     - https://github.com/michatinkers.keys
+  check_mode: false
 
 - name: Join authorized_keys_content in memory
   set_fact:

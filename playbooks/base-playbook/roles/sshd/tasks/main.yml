@@ -2,18 +2,18 @@
 - name: Edit sshd config
   lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^#?{{ item.regexp }}'
+    regexp: '^(#?\s*)?{{ item.regexp }}'
     line: '{{ item.line }}'
     state: present
   with_items:
     - line: "PermitRootLogin no"
-      regexp: "^PermitRootLogin\ "
+      regexp: "PermitRootLogin\ "
     - line: "PasswordAuthentication no"
-      regexp: "^PasswordAuthentication\ "
+      regexp: "PasswordAuthentication\ "
     - line: "PermitEmptyPasswords no"
-      regexp: "^PermitEmptyPasswords\ "
+      regexp: "PermitEmptyPasswords\ "
     - line: "StrictModes yes"
-      regexp: "^StrictModes\ "
+      regexp: "StrictModes\ "
     - line: "PubkeyAuthentication yes"
-      regexp: "^PubkeyAuthentication\ "
+      regexp: "PubkeyAuthentication\ "
   notify: Restart sshd

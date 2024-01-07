@@ -6,7 +6,7 @@
     line: '{{ item.line }}'
     state: present
   with_items:
-    - line: "PermitRootLogin no"
+    - line: "PermitRootLogin {{ permit_root_login }}"
       regexp: "PermitRootLogin\ "
     - line: "PasswordAuthentication no"
       regexp: "PasswordAuthentication\ "

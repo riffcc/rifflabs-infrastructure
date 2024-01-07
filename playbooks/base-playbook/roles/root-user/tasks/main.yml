@@ -37,7 +37,7 @@
 
 - name: Append additional_root_public_keys to combined_keys if defined and non-empty
   set_fact:
-    combined_keys: "{{ combined_keys + '\n' + (additional_root_public_keys }}"
+    combined_keys: "{{ combined_keys + '\n' + (additional_root_public_keys) }}"
   when: additional_root_public_keys is defined and additional_root_public_keys | length > 0
 
 - name: Write combined_keys to ~/.ssh/authorized_keys

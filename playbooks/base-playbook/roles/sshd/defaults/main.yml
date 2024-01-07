@@ -1,2 +1,2 @@
 ---
-permit_root_login: no
+permit_root_login: "no"

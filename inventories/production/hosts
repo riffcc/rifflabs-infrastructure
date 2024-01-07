@@ -1,6 +1,9 @@
 [maintenance]
 robot01
 
+[semaphore]
+robot01
+
 [proxmox:children]
 proxmox_wingslab
 

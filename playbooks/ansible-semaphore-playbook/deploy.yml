@@ -1,0 +1,8 @@
+---
+- name: Install and configure Semaphore
+  hosts: semaphore
+  become: true
+
+  roles:
+    - geerlingguy.docker
+    - ansible-semaphore

@@ -6,7 +6,7 @@
   roles:
     - dns
     - root-user
-    - riff-user
+    - { role: riff-user, when: not ldap_managed | default('false') }
     - geerlingguy.ntp
     - sshd
     # - sssd-ldap

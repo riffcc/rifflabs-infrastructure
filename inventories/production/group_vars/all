@@ -9,3 +9,6 @@ ntp_timezone: Australia/Perth
 ntp_daemon: chrony
 ntp_manage_config: true
 ntp_config_file: /etc/chrony/chrony.conf
+
+# Machines have LDAP installed and configured
+ldap_managed: false

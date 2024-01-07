@@ -1,14 +1,14 @@
 [maintenance]
 robot01
 
-# [proxmox:children]
-# proxmox_wingslab
+[proxmox:children]
+proxmox_wingslab
 
-# [proxmox_wingslab]
-# monstar.riff.cc ansible_user=root
-# al.riff.cc ansible_user=root
-# ambellina.riff.cc ansible_user=root
-# inferno.riff.cc ansible_user=root
+[proxmox_wingslab]
+monstar.riff.cc ansible_user=root
+al.riff.cc ansible_user=root
+ambellina.riff.cc ansible_user=root
+inferno.riff.cc ansible_user=root
 
 #[loadbalancer]
 #haproxy01.riff.cc ansible_user=riff

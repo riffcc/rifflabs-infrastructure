@@ -1,11 +1,16 @@
 ---
+- name: Ensure riff group exists
+  ansible.builtin.group:
+    name: riff
+    state: present
+    gid: 2000
+
 - name: Use the user module to get the information about the current user
-# TODO: make this dynamic instead of hardcoding the user
   user:
     name: "riff"
     state: present
+    uid: 2000
   register: user_details
-  check_mode: true
 
 - name: Ensure ~/.ssh directory exists
   ansible.builtin.file:

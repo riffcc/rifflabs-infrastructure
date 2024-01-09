@@ -28,6 +28,7 @@ ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS
 ARG ANSIBLE_GALAXY_CLI_ROLE_OPTS
 ARG PKGMGR
 
+COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 RUN /output/scripts/check_galaxy
 COPY _build /build
 WORKDIR /build

@@ -16,5 +16,5 @@ proxmox_coresvc:
     tags_proxmox_coresvc:
 
 loadbalancer:
-  hosts:
+  children:
     tags_loadbalancer:

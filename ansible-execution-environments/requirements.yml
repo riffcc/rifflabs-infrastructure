@@ -1,6 +1,4 @@
 ---
 collections:
 - name: netbox.netbox
-  version: 3.16.0
 - name: community.general
-  version: 8.2.0

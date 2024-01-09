@@ -2,3 +2,7 @@
 roles:
 - name: geerlingguy.ntp
   version: 2.3.3
+
+collections:
+- name: community.general
+

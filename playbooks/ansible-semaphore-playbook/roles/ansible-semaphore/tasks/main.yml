@@ -1,0 +1,33 @@
+---
+- name: Create Ansible Semaphore group
+  group:
+    name: semaphore
+    state: present
+
+- name: Create Ansible Semaphore user
+  user:
+    name: semaphore
+    shell: /bin/bash
+    home: /opt/semaphore
+    createhome: yes
+
+- name: Create Docker Compose file for Ansible Semaphore
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/semaphore/docker-compose.yml
+    owner: semaphore
+    group: semaphore
+
+- name: Create Ansible Semaphore data directory
+  file:
+    path: /opt/semaphore/data
+    state: directory
+    owner: semaphore
+    group: semaphore
+    mode: 0700
+
+- name: Bring up Ansible Semaphore using Docker Compose
+  ansible.builtin.command:
+    chdir: /opt/semaphore
+    cmd: docker compose up -d
+    # TODO: Make this more idempotent

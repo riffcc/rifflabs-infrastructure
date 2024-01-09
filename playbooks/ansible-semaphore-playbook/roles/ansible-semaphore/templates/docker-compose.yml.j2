@@ -1,0 +1,25 @@
+services:
+  semaphore:
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    image: semaphoreui/semaphore:latest
+    environment:
+      {% if semaphore_ldap_config is defined %}
+      {{ semaphore_ldap_config | indent(6) }}
+      {% endif %}
+      {% if semaphore_database_config is defined %}
+      {{ semaphore_database_config | indent(6) }}
+      {% else %}
+      SEMAPHORE_DB_DIALECT: bolt
+      {% endif %}
+      SEMAPHORE_ADMIN_PASSWORD: {{ semaphore_initial_password }}
+      SEMAPHORE_ADMIN_NAME: {{ semaphore_admin_name }}
+      SEMAPHORE_ADMIN_EMAIL: {{ semaphore_admin_email }}
+      SEMAPHORE_ADMIN: {{ semaphore_admin_username }}
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: {{ semaphore_encryption_secret_key }}
+    volumes:
+      - /opt/semaphore/data/etc:/etc/semaphore
+      {%- if semaphore_database_config is not defined %}
+      - /opt/semaphore/data/db:/var/lib/semaphore
+      {%- endif %}

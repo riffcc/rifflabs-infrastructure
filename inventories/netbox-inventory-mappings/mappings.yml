@@ -1,20 +1,20 @@
 ---
 maintenance:
   children:
-    - tags_maintenance
+    tags_maintenance:
 
 semaphore:
   children:
-    - tags_semaphore
+    tags_semaphore:
 
 proxmox:
   children:
-    - tags_proxmox
+    tags_proxmox:
 
 proxmox_coresvc:
   children:
-    - tags_proxmox_coresvc
+    tags_proxmox_coresvc:
 
 loadbalancer:
   hosts:
-    - tags_loadbalancer
+    tags_loadbalancer:

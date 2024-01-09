@@ -11,10 +11,6 @@ proxmox:
   children:
     tags_proxmox:
 
-proxmox_coresvc:
-  children:
-    tags_proxmox_coresvc:
-
 loadbalancer:
   children:
     tags_loadbalancer:

@@ -3,7 +3,10 @@ validate_certs: True
 config_context: False
 group_by:
   - device_roles
+  - cluster
+  - tags
 query_filters:
   - role: "server"
+  - role: "virtual-server"
 device_query_filters:
   - has_primary_ip: 'true'

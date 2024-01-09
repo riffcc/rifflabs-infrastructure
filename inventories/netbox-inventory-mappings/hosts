@@ -1,0 +1,14 @@
+[maintenance:children]
+tags_maintenance
+
+[semaphore:children]
+tags_semaphore
+
+[proxmox:children]
+tags_proxmox
+
+[proxmox_coresvc:children]
+tags_proxmox_coresvc
+
+[loadbalancer]
+tags_loadbalancer

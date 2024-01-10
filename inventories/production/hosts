@@ -1,3 +1,9 @@
 # This is empty, as the hosts are managed in NetBox.
 [maintenance]
 robot01.riff.cc
+
+[cluster_coresvc]
+
+[cluster_wingslab]
+
+[loadbalancer]

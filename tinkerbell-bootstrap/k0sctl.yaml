@@ -1,0 +1,22 @@
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: tinkerbell
+spec:
+  hosts:
+  - ssh:
+      address: 10.1.2.28
+      user: riff
+      port: 22
+      keyPath: ~/.ssh/id_ed25519
+    role: controller+worker
+    noTaints: true
+  k0s:
+    version: v1.28.6+k0s.0
+    dynamicConfig: false
+    config:
+      spec:
+        network:
+          provider: calico
+        api:
+          externalAddress: 10.1.2.28

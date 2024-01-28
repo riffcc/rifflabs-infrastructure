@@ -1,6 +1,0 @@
-[submodule "charts"]
-	path = charts
-	url = https://github.com/tinkerbell/charts.git
-[submodule "tinkerbell-charts"]
-	path = tinkerbell-charts
-	url = https://github.com/riffcc/tinkerbell-charts

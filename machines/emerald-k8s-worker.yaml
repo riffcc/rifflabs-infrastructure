@@ -14,11 +14,31 @@ machines:
     macAddress: "b8:ce:f6:74:e1:02"
     ipAddress: "10.1.1.156"
     bootDisk: /dev/nvme0n1
-  - hostname: monstar
-    macAddress: "b8:ce:f6:74:e4:56"
-    ipAddress: "10.1.1.154"
-    bootDisk: /dev/nvme0n1
   - hostname: al
     macAddress: "0c:42:a1:e1:f2:34"
     ipAddress: "10.1.1.155"
     bootDisk: /dev/nvme0n1
+  - hostname: emerald-k8s-w01
+    macAddress: "BC:24:11:E4:A3:93"
+    ipAddress: "10.1.2.101"
+  - hostname: emerald-k8s-w02
+    macAddress: "BC:24:11:20:B6:BB"
+    ipAddress: "10.1.2.102"
+  - hostname: emerald-k8s-w03
+    macAddress: "BC:24:11:99:A0:D1"
+    ipAddress: "10.1.2.103"
+  - hostname: emerald-k8s-w04
+    macAddress: "BC:24:11:55:24:CE"
+    ipAddress: "10.1.2.104"
+  - hostname: emerald-k8s-w05
+    macAddress: "BC:24:11:96:2B:D4"
+    ipAddress: "10.1.2.105"
+  - hostname: emerald-k8s-w06
+    macAddress: "BC:24:11:8A:B9:45"
+    ipAddress: "10.1.2.106"
+  - hostname: emerald-k8s-w07
+    macAddress: "BC:24:11:93:79:4B"
+    ipAddress: "10.1.2.107"
+  - hostname: emerald-k8s-w08
+    macAddress: "BC:24:11:A0:B7:52"
+    ipAddress: "10.1.2.108"

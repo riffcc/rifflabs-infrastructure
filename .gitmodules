@@ -1,0 +1,3 @@
+[submodule "tinkerbell-charts"]
+	path = tinkerbell-charts
+	url = https://github.com/tinkerbell/charts.git

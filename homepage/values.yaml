@@ -1,5 +1,25 @@
+image:
+  repository: ghcr.io/gethomepage/homepage
+  tag: v0.8.7
 config:
   services:
+    - Status and updates:
+        - Streaming:
+            icon: jellyfin.png
+            href: https://status.riff.cc/status/media
+            description: Jellyfin and Jellyseerr status
+            widget:
+              type: uptimekuma
+              url: https://status.riff.cc
+              slug: media
+        - Storage:
+            icon: mdi-nas
+            href: https://status.riff.cc/status/storage
+            description: Distributed storage status
+            widget:
+              type: uptimekuma
+              url: https://status.riff.cc
+              slug: storage              
     - Entertainment:
         - Jellyfin:
             icon: jellyfin.png
@@ -36,10 +56,6 @@ config:
             description: Enterprise infrastruture monitoring
 
   widgets:
-    - greeting:
-        text_size: x3
-        text: "Thanks for using the Riff Lab. We're working on improvements to stability and resilience at the moment. Please report any issues you see promptly. Cheers! - w"
-    # show the kubernetes widget, with the cluster summary and individual nodes
     - kubernetes:
         cluster:
           show: true
@@ -49,6 +65,10 @@ config:
           label: "Emerald Cluster"
         nodes:
           show: false
+    - greeting:
+        text_size: x3
+        text: "Thanks for using the Riff Lab. We're working on improvements to stability and resilience at the moment. Please report any issues you see promptly. Cheers! - w"
+    # show the kubernetes widget, with the cluster summary and individual nodes
   kubernetes:
     mode: cluster
   settings:
@@ -70,7 +90,7 @@ ingress:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/name: "Homepage"
       gethomepage.dev/description: "A dashboard for the Riff Lab"
-      gethomepage.dev/group: "Home"
+      gethomepage.dev/group: "Status and updates"
       gethomepage.dev/icon: "homepage.png"
     hosts:
       - host: home.riff.cc

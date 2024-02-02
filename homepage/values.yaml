@@ -1,0 +1,83 @@
+config:
+  services:
+    - Entertainment:
+        - Jellyfin:
+            icon: jellyfin.png
+            href: https://jelly.riff.cc/
+            description: Streaming media
+        - Jellyseerr:
+            icon: jellyseerr.png
+            href: https://requests.riff.cc/
+            description: Request media
+    - Management:
+        - Rancher:
+            icon: rancher.png
+            href: https://rancher.riff.cc/
+            description: Manage Kubernetes
+        - Proxmox CoreSVC:
+            icon: proxmox.png
+            href: https://coresvc.riff.cc:8006/
+            description: Manage Core Services Proxmox
+        - Proxmox Main:
+            icon: proxmox.png
+            href: https://proxmox.riff.cc:8006/
+            description: Manage Main Proxmox
+        - AWX Automation:
+            icon: awx.png
+            href: https://awx.riff.cc/
+            description: Ansible, for better or worse
+        - NetBox:
+            icon: netbox.png
+            href: https://ipam.riff.cc/
+            description: Network infrastructure management
+        - CheckMK:
+            icon: checkmk.png
+            href: http://monitoring.riff.cc/monitoring
+            description: Enterprise infrastruture monitoring
+
+  widgets:
+    - greeting:
+        text_size: x3
+        text: "Thanks for using the Riff Lab. We're working on improvements to stability and resilience at the moment. Please report any issues you see promptly. Cheers! - w"
+    # show the kubernetes widget, with the cluster summary and individual nodes
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "Emerald Cluster"
+        nodes:
+          show: false
+  kubernetes:
+    mode: cluster
+  settings:
+
+# The service account is necessary to allow discovery of other services
+serviceAccount:
+  create: true
+  name: homepage
+
+# This enables the service account to access the necessary resources
+enableRbac: true
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      # Example annotations to add Homepage to your Homepage!
+      cert-manager.io/cluster-issuer: "acme-prod"
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/name: "Homepage"
+      gethomepage.dev/description: "A dashboard for the Riff Lab"
+      gethomepage.dev/group: "Home"
+      gethomepage.dev/icon: "homepage.png"
+    hosts:
+      - host: home.riff.cc
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+    - secretName: homepage-tls-secret
+      hosts:
+      - "home.riff.cc"

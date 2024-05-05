@@ -1,0 +1,41 @@
+podOptions:
+  nodeSelector:
+    jellyfin: "quicksync"
+operator:
+  verify:
+    enabled: false
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            JELLYFIN_PublishedServerUrl: "{{ $.Values.chartContext.appUrl }}"
+ingress:
+  main:
+    integrations:
+      traefik:
+        enabled: false
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: "acme-prod"
+    hosts:
+      - host: jelly.riff.cc
+    tls:
+    - secretName: jellyfin-tls-secret
+      hosts:
+      - "jelly.riff.cc"
+persistence:
+  dri:
+    enabled: true
+    type: hostPath
+    hostPath: /dev/dri
+    hostPathType: DirectoryOrCreate
+    mountPath: /dev/dri
+  media:
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/cubefs/media
+    hostPathType: Directory
+    mountPath: /media/

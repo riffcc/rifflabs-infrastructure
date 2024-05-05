@@ -1,0 +1,30 @@
+# Defaults for this set of machines
+defaults:
+  os:
+    name: debian
+    os_slug: debian_12
+    version: 12
+  tags: production
+  manufacturer:
+    slug: custom
+
+# The machines to create
+machines:
+  - hostname: cubefs-master01.per
+    macAddress: "BC:24:11:E4:A3:93"
+    ipAddress: "10.1.2.101"
+  - hostname: cubefs-master02.per
+    macAddress: "BC:24:11:20:B6:BB"
+    ipAddress: "10.1.2.102"
+  - hostname: cubefs-master03.per
+    macAddress: "BC:24:11:99:A0:D1"
+    ipAddress: "10.1.2.103"
+  - hostname: cubefs-authnode01.per
+    macAddress: "BC:24:11:55:24:CE"
+    ipAddress: "10.1.2.104"
+  - hostname: cubefs-authnode02.per
+    macAddress: "BC:24:11:96:2B:D4"
+    ipAddress: "10.1.2.105"
+  - hostname: cubefs-authnode03.per
+    macAddress: "BC:24:11:8A:B9:45"
+    ipAddress: "10.1.2.106"

@@ -1,0 +1,4 @@
+---
+# Use older Redis 6
+#image:
+#  tag: 6.2.14

@@ -3,7 +3,7 @@ curl -X 'POST' \
   "http://10.1.1.151:8008/api/v1/dns/zones/records?zone=riff.cc.&hostname=opal-fragment-$i&uid=0" \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer APIKEY' \
+  -H 'Authorization: Bearer $APIKEY' \
   -d '{
   "data": "10.2.1.'$i'",
   "mxPreference": 0,

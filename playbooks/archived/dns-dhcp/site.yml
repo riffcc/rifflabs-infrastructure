@@ -1,7 +1,0 @@
----
-- name: Install Technitium DNS Server
-  hosts: dns
-  become: true
-  roles:
-    - technitium-dns
-    - gantsign.golang

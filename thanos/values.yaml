@@ -1,0 +1,41 @@
+query:
+  dnsDiscovery:
+    sidecarsService: "rancher-monitoring-thanos-discovery"
+    sidecarsNamespace: "cattle-monitoring-system"
+  replicaCount: 8
+queryFrontend:
+  replicaCount: 8
+  extraFlags:
+    - --query-range.split-interval=10m
+    - |
+      --query-range.response-cache-config=
+      type: REDIS
+      config:
+        addr: ""
+        username: ""
+        password: ""
+        db: 0
+        dial_timeout: 5s
+        read_timeout: 6s
+        write_timeout: 6s
+        max_get_multi_concurrency: 100
+        get_multi_batch_size: 100
+        max_set_multi_concurrency: 100
+        set_multi_batch_size: 100
+        tls_enabled: false
+        tls_config:
+          ca_file: ""
+          cert_file: ""
+          key_file: ""
+          server_name: ""
+          insecure_skip_verify: false
+        cache_size: 0
+        master_name: ""
+        max_async_buffer_size: 10000
+        max_async_concurrency: 20
+        expiration: 24h0m0s
+
+#  service:
+#    type: LoadBalancer
+storegateway:
+  replicaCount: 3

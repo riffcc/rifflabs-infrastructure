@@ -1,0 +1,6 @@
+cluster:
+  init: true
+  nodes: 18
+  replicas: 2
+
+password: thisisnotarealpasswordbutnicetry

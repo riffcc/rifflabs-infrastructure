@@ -1,0 +1,26 @@
+query:
+  dnsDiscovery:
+    sidecarsService: "rancher-monitoring-thanos-discovery"
+    sidecarsNamespace: "cattle-monitoring-system"
+  replicaCount: 8
+queryFrontend:
+  replicaCount: 8
+  extraFlags:
+    - --query-range.split-interval=10m
+    - --query-range.max-retries-per-request=9999
+    - |
+      --query-range.response-cache-config=
+      type: IN-MEMORY
+      config:
+        max_size: "2GB"
+        max_size_items: 0
+        validity: 0s
+        expiration: 6h
+
+#  service:
+#    type: LoadBalancer
+#    loadBalancerSourceRanges:
+#      - 10.1.0.0/16
+#      - 100.115.0.0/16
+storegateway:
+  replicaCount: 3

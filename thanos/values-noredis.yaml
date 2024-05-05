@@ -1,0 +1,13 @@
+query:
+  dnsDiscovery:
+    sidecarsService: "rancher-monitoring-thanos-discovery"
+    sidecarsNamespace: "cattle-monitoring-system"
+  replicaCount: 8
+queryFrontend:
+  replicaCount: 8
+  extraFlags:
+    - --query-range.split-interval=10m
+  service:
+    type: LoadBalancer
+storegateway:
+  replicaCount: 3

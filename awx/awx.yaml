@@ -13,4 +13,3 @@ spec:
     cert-manager.io/cluster-issuer: acme-prod
   ingress_class_name: nginx
   ingress_tls_secret: awx-riff-tls-secret
-

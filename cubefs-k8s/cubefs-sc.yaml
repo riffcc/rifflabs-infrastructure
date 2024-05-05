@@ -9,4 +9,4 @@ parameters:
   owner: "dstcodex"
   logLevel: "debug"
   authenticate: "true"
-  clientKey: eyJpZCI6ImN1YmVjbGllbnQiLCJhdXRoX2tleSI6IlJNck12REdHWGFDWVhyVHZZTlk0YkVKb3lRb1hFZy9WaHU4bUtjajNaYU09In0=
+  clientKey: redacted

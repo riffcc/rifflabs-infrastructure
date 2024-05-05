@@ -1,0 +1,12 @@
+kind: BGPFilter
+apiVersion: crd.projectcalico.org/v1
+metadata:
+  name: only-publish-loadbalancers
+spec:
+  exportV4:
+    - action: Accept
+      cidr: "10.0.3.0/24"
+      matchOperator: In
+    - action: Reject
+      cidr: "10.0.3.0/24"
+      matchOperator: NotIn

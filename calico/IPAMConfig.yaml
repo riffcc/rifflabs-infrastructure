@@ -1,0 +1,7 @@
+apiVersion: projectcalico.org/v3
+kind: IPAMConfiguration
+metadata:
+  name: default
+spec:
+  strictAffinity: false
+  maxBlocksPerHost: 128

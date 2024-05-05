@@ -1,0 +1,10 @@
+apiVersion: crd.projectcalico.org/v1
+kind: IPPool
+metadata:
+  name: loadbalancer-ippool
+spec:
+  cidr: "10.0.3.0/24"
+  ipipMode: Never
+  natOutgoing: false
+  nodeSelector: all()
+  disableBGPExport: false

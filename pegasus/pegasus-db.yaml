@@ -1,0 +1,34 @@
+kind: "postgresql"
+apiVersion: "acid.zalan.do/v1"
+
+metadata:
+  name: "pegasus-db"
+  namespace: "pegasus"
+  labels:
+    team: acid
+
+spec:
+  teamId: "acid"
+  postgresql:
+    version: "15"
+    parameters:
+      synchronous_commit: "off"
+  numberOfInstances: 3
+  volume:
+    size: "200Gi"
+    storageClass: ceph-rbd
+  enableMasterLoadBalancer: true
+  allowedSourceRanges: ["10.1.0.0/16", "10.42.0.0/16", "10.0.2.0/24", "10.0.20.0/24"]
+  users:
+    estuary: []
+    delta: []
+  databases:
+    estuary: estuary
+    delta: delta
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 2000m
+      memory: 16384Mi

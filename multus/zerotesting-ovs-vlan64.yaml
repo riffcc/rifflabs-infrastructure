@@ -1,0 +1,17 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: zerotesting-ovs-vlan64
+  namespace: zerotesting
+spec:
+  config: '{
+            "cniVersion": "0.3.0",
+            "name": "zerotesting",
+            "type": "bridge",
+            "bridge": "br0",
+            "mode": "bridge",
+            "ipam": {
+                "routes": [],
+                "type": "dhcp"
+              }
+           }'

@@ -1,0 +1,20 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: cubefs-storage-vlan20
+  namespace: cubefs
+spec:
+  config: '{
+            "cniVersion": "0.3.0",
+            "name": "cubefs-storage",
+            "type": "bridge",
+            "bridge": "br0",
+            "vlan": 20,
+            "mode": "bridge",
+            "ipam": {
+                "type": "whereabouts",
+                "ipRanges": [{
+                    "range": "10.0.20.20-10.0.20.23/24"
+                  }]
+              }
+           }'

@@ -1,9 +1,32 @@
-# This is empty, as the hosts are managed in NetBox.
+# Hosts will be managed in Netbox in future
+
 [maintenance]
 robot01.riff.cc
 
 [cluster_coresvc]
+coheed.per.riff.cc # coheed.mini.riff.cc in future
+cambria.per.riff.cc
+creature.per.riff.cc
 
 [cluster_wingslab]
+sizer.per.riff.cc
+
+[cluster_highscale]
+al.per.riff.cc
+ambellina.per.riff.cc
+atris.per.riff.cc
+barbara.per.riff.cc
+enid.per.riff.cc
+ethel.per.riff.cc
+juhani.per.riff.cc
+monstar.per.riff.cc
+nia.per.riff.cc
+vash.per.riff.cc
+vaxis.per.riff.cc
+
+[cluster_opal]
+opal-k8s-m0[1:3].per.riff.cc
+opal-k8s-w[0:63].per.riff.cc
 
 [loadbalancer]
+haproxy0[1:3].per.riff.cc

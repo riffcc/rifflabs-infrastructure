@@ -1,0 +1,31 @@
+apiVersion: v1
+items:
+- apiVersion: kubevirt.io/v1
+  kind: KubeVirt
+  metadata:
+    annotations:
+      kubevirt.io/latest-observed-api-version: v1
+      kubevirt.io/storage-observed-api-version: v1
+    name: kubevirt
+    namespace: kubevirt
+  spec:
+    certificateRotateStrategy: {}
+    configuration:
+      autoCPULimitNamespaceLabelSelector:
+        matchLabels:
+          autoCpuLimit: "true"
+      developerConfiguration:
+        cpuAllocationRatio: 1
+        featureGates:
+          - NUMA
+          - CPUManager
+          - Sidecar
+          - GPU
+          - HotplugNICs
+          - VMLiveUpdateFeatures
+    customizeComponents: {}
+    imagePullPolicy: IfNotPresent
+    workloadUpdateStrategy: {}
+kind: List
+metadata:
+  resourceVersion: ""

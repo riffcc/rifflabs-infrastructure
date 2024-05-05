@@ -1,0 +1,239 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: 2018-07-04T15:03:08Z
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: cubefs-authnode01
+  namespace: cubefs
+spec:
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: cubefs-authnode01
+    spec:
+      domain:
+        cpu:
+          cores: 4
+          sockets: 1
+          threads: 2
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+          interfaces:
+            - name: default
+              bridge: {}
+            - name: storage
+              bridge: {}
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      networks:
+      - name: default
+        pod: {}
+      - name: storage
+        multus:
+          networkName: cubefs-authnode01-vlan20
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: cubefs-authnode01
+      - cloudInitNoCloud:
+          networkData: |
+            version: 1
+            config:
+            - type: physical
+              name: enp1s0
+              subnets:
+                - type: dhcp
+            - type: physical
+              name: enp2s0
+              subnets:
+                - type: dhcp
+          userData: |
+            #cloud-config
+            hostname: cubefs-authnode01
+            ssh_pwauth: False
+            disable_root: true
+            user: riff
+            ssh_authorized_keys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2E4KqA3O9AgfB0FnDcNcsm/S+EjIWf+Bw7SBESZMsx wings@blackberry
+            package_update: true
+            packages:
+            - qemu-guest-agent
+            - dhclient
+            runcmd:
+            - systemctl enable qemu-guest-agent
+            - systemctl start qemu-guest-agent
+        name: cloudinitdisk
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: 2018-07-04T15:03:08Z
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: cubefs-authnode02
+  namespace: cubefs
+spec:
+  running: false
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: cubefs-authnode02
+    spec:
+      domain:
+        cpu:
+          cores: 4
+          sockets: 1
+          threads: 2
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+          interfaces:
+            - name: default
+              bridge: {}
+            - name: storage
+              bridge: {}
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      networks:
+      - name: default
+        pod: {}
+      - name: storage
+        multus:
+          networkName: cubefs-authnode02-vlan20
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: cubefs-authnode02
+      - cloudInitNoCloud:
+          networkData: |
+            version: 1
+            config:
+            - type: physical
+              name: enp1s0
+              subnets:
+                - type: dhcp
+            - type: physical
+              name: enp2s0
+              subnets:
+                - type: dhcp
+          userData: |
+            #cloud-config
+            hostname: cubefs-authnode02
+            ssh_pwauth: False
+            disable_root: true
+            user: riff
+            ssh_authorized_keys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2E4KqA3O9AgfB0FnDcNcsm/S+EjIWf+Bw7SBESZMsx wings@blackberry
+            package_update: true
+            packages:
+            - qemu-guest-agent
+            - dhclient
+            runcmd:
+            - systemctl enable qemu-guest-agent
+            - systemctl start qemu-guest-agent
+        name: cloudinitdisk
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: 2018-07-04T15:03:08Z
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: cubefs-authnode03
+  namespace: cubefs
+spec:
+  running: false
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: cubefs-authnode03
+    spec:
+      domain:
+        cpu:
+          cores: 4
+          sockets: 1
+          threads: 2
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+          interfaces:
+            - name: default
+              bridge: {}
+            - name: storage
+              bridge: {}
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      networks:
+      - name: default
+        pod: {}
+      - name: storage
+        multus:
+          networkName: cubefs-authnode03-vlan20
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: cubefs-authnode03
+      - cloudInitNoCloud:
+          networkData: |
+            version: 1
+            config:
+            - type: physical
+              name: enp1s0
+              subnets:
+                - type: dhcp
+            - type: physical
+              name: enp2s0
+              subnets:
+                - type: dhcp
+          userData: |
+            #cloud-config
+            hostname: cubefs-authnode03
+            ssh_pwauth: False
+            disable_root: true
+            user: riff
+            ssh_authorized_keys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2E4KqA3O9AgfB0FnDcNcsm/S+EjIWf+Bw7SBESZMsx wings@blackberry
+            package_update: true
+            packages:
+            - qemu-guest-agent
+            - dhclient
+            runcmd:
+            - systemctl enable qemu-guest-agent
+            - systemctl start qemu-guest-agent
+        name: cloudinitdisk

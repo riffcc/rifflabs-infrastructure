@@ -1,0 +1,51 @@
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: cubefs-authnode01
+  namespace: cubefs
+spec:
+  source:
+    pvc:
+      namespace: vm-images
+      name: debian-12
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: cubefs-authnode02
+  namespace: cubefs
+spec:
+  source:
+    pvc:
+      namespace: vm-images
+      name: debian-12
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: cubefs-authnode03
+  namespace: cubefs
+spec:
+  source:
+    pvc:
+      namespace: vm-images
+      name: debian-12
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi

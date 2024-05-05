@@ -1,0 +1,55 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: 2018-07-04T15:03:08Z
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: opal-fragment01
+  namespace: zerovm
+spec:
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: opal-fragment01
+    spec:
+      domain:
+        cpu:
+          cores: 1
+          sockets: 1
+          threads: 4
+      devices:
+        disks:
+          - name: disk0
+            disk:
+              bus: virtio
+          - disk: {}
+            name: mynoclouddisk
+        interfaces:
+          - name: default
+            bridge: {}
+          - name: kubernetes
+            bridge: {}
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 16384M
+      networks:
+      - name: kubernetes
+        multus:
+          networkName: zerovm-vlan2
+      - name: default
+        pod: {}
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: opal-fragment01
+      - name: mynoclouddisk
+        cloudInitNoCloud:
+          secretRef:
+            name: opal-fragment01-userdata
+          networkDataSecretRef:
+            name: opal-fragment01-networkdata

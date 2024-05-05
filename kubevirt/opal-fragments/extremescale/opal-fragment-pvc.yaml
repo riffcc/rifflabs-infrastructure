@@ -1,0 +1,70 @@
+apiVersion: pool.kubevirt.io/v1alpha1
+kind: VirtualMachinePool
+metadata:
+  name: opal-fragment
+  namespace: zerovm
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      kubevirt.io/vmpool: opal-fragment
+  virtualMachineTemplate:
+    metadata:
+      labels:
+        kubevirt.io/vmpool: opal-fragment
+    spec:
+      running: true
+      dataVolumeTemplates:
+        - metadata:
+            name: opal-fragment
+          spec:
+            pvc:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 20Gi
+      template:
+        metadata:
+          labels:
+            kubevirt.io/vmpool: opal-fragment
+        spec:
+          domain:
+            cpu:
+              cores: 1
+              sockets: 1
+              threads: 4
+            devices:
+              disks:
+                - name: disk0
+                  disk:
+                    bus: virtio
+                - name: mynoclouddisk
+                  disk: {}
+              interfaces:
+                - name: default
+                  bridge: {}
+                - name: kubernetes
+                  bridge: {}
+            machine:
+              type: q35
+            resources:
+              requests:
+                memory: 16384M
+          networks:
+            - name: kubernetes
+              multus:
+                networkName: zerovm-vlan2
+            - name: default
+              pod: {}
+          volumes:
+            - name: disk0
+              persistentVolumeClaim:
+                claimName: opal-fragment
+            - name: mynoclouddisk
+              cloudInitNoCloud:
+                secretRef:
+                  name: opal-fragment-userdata
+                networkDataSecretRef:
+                  name: opal-fragment-networkdata
+

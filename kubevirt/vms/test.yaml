@@ -1,0 +1,67 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: test
+  namespace: cubefs
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt-manager.io/managed: "true"
+        kubevirt.io/domain: test
+    spec:
+      architecture: amd64
+      domain:
+        cpu:
+          cores: 4
+          sockets: 1
+          threads: 2
+        devices:
+          disks:
+          - disk: {}
+            name: disk1
+          - disk:
+              bus: virtio
+            name: disk3
+          interfaces:
+          - bridge: {}
+            name: net1
+          - bridge: {}
+            name: net2
+          networkInterfaceMultiqueue: true
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 16Gi
+      networks:
+      - name: net1
+        pod: {}
+      - name: net2
+        multus:
+          networkName: cubefs-storage-vlan20
+      priorityClassName: vm-standard
+      volumes:
+      - dataVolume:
+          name: cubefs-test-disk1
+        name: disk1
+      - cloudInitNoCloud:
+          networkData: |
+            version: 1
+            config:
+                - type: physical
+                  name: enp1s0
+                  subnets:
+                  - type: dhcp
+                - type: nameserver
+                  address:
+                  - '8.8.8.8'
+                  - '8.8.4.4'
+          userData: |
+            #cloud-config
+            manage_etc_hosts: true
+            hostname: test
+            user: riff
+            password: michatinkers
+        name: disk3

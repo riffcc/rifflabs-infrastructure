@@ -1,0 +1,34 @@
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: opal-fragment01
+  namespace: zerovm
+spec:
+  source:
+    pvc:
+      namespace: vm-images
+      name: debian-12
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: opal-fragment02
+  namespace: zerovm
+spec:
+  source:
+    pvc:
+      namespace: vm-images
+      name: debian-12
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi

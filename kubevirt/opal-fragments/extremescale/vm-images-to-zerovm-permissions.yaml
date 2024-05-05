@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vm-image-reader
+rules:
+- apiGroups: ["cdi.kubevirt.io"]
+  resources: ["datavolumes/source"]
+  verbs: ["*"]
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-vm-images
+  namespace: vm-images
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: zerovm
+roleRef:
+  kind: ClusterRole
+  name: vm-image-reader
+  apiGroup: rbac.authorization.k8s.io

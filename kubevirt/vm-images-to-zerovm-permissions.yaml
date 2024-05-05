@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: vm-images
+  name: vm-image-reader
+rules:
+- apiGroups: ["kubevirt.io"]
+  resources: ["virtualmachines", "virtualmachineinstances"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-vm-images
+  namespace: vm-images
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: zerovm
+roleRef:
+  kind: Role
+  name: vm-image-reader
+  apiGroup: rbac.authorization.k8s.io

@@ -10,14 +10,6 @@ defaults:
 
 # The machines to create
 machines:
-  - hostname: ambellina
-    macAddress: "b8:ce:f6:74:e1:02"
-    ipAddress: "10.1.1.156"
-    bootDisk: /dev/nvme0n1
-  - hostname: al
-    macAddress: "0c:42:a1:e1:f2:34"
-    ipAddress: "10.1.1.155"
-    bootDisk: /dev/nvme0n1
   - hostname: emerald-k8s-w01
     macAddress: "BC:24:11:E4:A3:93"
     ipAddress: "10.1.2.101"
@@ -42,3 +34,51 @@ machines:
   - hostname: emerald-k8s-w08
     macAddress: "BC:24:11:A0:B7:52"
     ipAddress: "10.1.2.108"
+  - hostname: emerald-k8s-w09
+    macAddress: "BC:24:11:6C:1C:70"
+    ipAddress: "10.1.2.109"
+  - hostname: emerald-k8s-w10
+    macAddress: "BC:24:11:F2:8C:AA"
+    ipAddress: "10.1.2.110"
+  - hostname: emerald-k8s-w11
+    macAddress: "BC:24:11:2F:27:0C"
+    ipAddress: "10.1.2.111"
+  - hostname: emerald-k8s-w12
+    macAddress: "BC:24:11:41:42:5D"
+    ipAddress: "10.1.2.112"
+  - hostname: emerald-k8s-w13
+    macAddress: "BC:24:11:D9:35:1C"
+    ipAddress: "10.1.2.113"
+  - hostname: emerald-k8s-w14
+    macAddress: "BC:24:11:1E:FA:90"
+    ipAddress: "10.1.2.114"
+  - hostname: emerald-k8s-w15
+    macAddress: "BC:24:11:35:20:BA"
+    ipAddress: "10.1.2.115"
+  - hostname: emerald-k8s-w16
+    macAddress: "BC:24:11:FD:06:3D"
+    ipAddress: "10.1.2.116"
+  - hostname: emerald-k8s-w17
+    macAddress: "BC:24:11:60:9D:A2"
+    ipAddress: "10.1.2.117"
+  - hostname: emerald-k8s-w18
+    macAddress: "BC:24:11:84:F4:05"
+    ipAddress: "10.1.2.118"
+  - hostname: emerald-k8s-w19
+    macAddress: "BC:24:11:46:4B:31"
+    ipAddress: "10.1.2.119"
+  - hostname: emerald-k8s-w20
+    macAddress: "BC:24:11:BA:7E:68"
+    ipAddress: "10.1.2.120"
+  - hostname: emerald-k8s-w21
+    macAddress: "BC:24:11:29:FD:C9"
+    ipAddress: "10.1.2.121"
+  - hostname: emerald-k8s-w22
+    macAddress: "BC:24:11:09:6A:CA"
+    ipAddress: "10.1.2.122"
+  - hostname: emerald-k8s-w23
+    macAddress: "BC:24:11:03:AC:0A"
+    ipAddress: "10.1.2.123"
+  - hostname: emerald-k8s-w24
+    macAddress: "BC:24:11:38:B2:8E"
+    ipAddress: "10.1.2.124"

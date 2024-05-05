@@ -20,4 +20,9 @@ machines:
   - hostname: emerald-k8s-m03
     macAddress: "CE:44:7F:D3:F2:E6"
     ipAddress: "10.1.1.63"
-
+  - hostname: emerald-k8s-m04
+    macAddress: "CE:44:7F:D3:F2:E6"
+    ipAddress: "10.1.1.64"
+  - hostname: emerald-k8s-m05
+    macAddress: "CE:44:7F:D3:F2:E6"
+    ipAddress: "10.1.1.65"

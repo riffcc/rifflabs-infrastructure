@@ -1,0 +1,16 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx-rifflab
+  namespace: awx
+spec:
+  replicas: 1
+  postgres_configuration_secret: awx-postgres-configuration
+  ingress_type: ingress
+  hostname: awx.riff.cc
+  ingress_annotations: |
+    cert-manager.io/cluster-issuer: acme-prod
+  ingress_class_name: nginx
+  ingress_tls_secret: awx-riff-tls-secret
+

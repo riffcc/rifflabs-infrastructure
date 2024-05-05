@@ -1,0 +1,32 @@
+kind: "postgresql"
+apiVersion: "acid.zalan.do/v1"
+
+metadata:
+  name: "grafana-db"
+  namespace: "cattle-monitoring-system"
+  labels:
+    team: acid
+
+spec:
+  teamId: "acid"
+  postgresql:
+    version: "15"
+    parameters:
+      synchronous_commit: "off"
+  numberOfInstances: 3
+  volume:
+    size: "50Gi"
+    storageClass: ceph-rbd
+  allowedSourceRanges:
+    # IP ranges to access your cluster go here
+  users:
+    grafana: []
+  databases:
+    grafana: grafana
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 2000m
+      memory: 2000Mi

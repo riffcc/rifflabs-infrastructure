@@ -1,0 +1,125 @@
+image:
+  repository: ghcr.io/gethomepage/homepage
+  tag: v0.8.7
+config:
+  services:
+    - Status and updates:
+        - Streaming:
+            icon: jellyfin.png
+            href: https://status.riff.cc/status/media
+            description: Jellyfin and Jellyseerr status
+            widget:
+              type: uptimekuma
+              url: https://status.riff.cc
+              slug: media
+        - Storage:
+            icon: mdi-nas
+            href: https://status.riff.cc/status/storage
+            description: Distributed storage status
+            widget:
+              type: uptimekuma
+              url: https://status.riff.cc
+              slug: storage
+        - Power usage:
+            icon: home-assistant-alt.png
+            href: http://10.1.20.41:8123
+            description: Total power usage of the Riff Lab
+            widget:
+              type: homeassistant
+              url: http://10.1.20.41:8123
+              key: x
+              custom:
+              - state: sensor.compute_01_current_consumption
+                label: "Compute energy use (now)"
+              - state: sensor.compute_01_today_s_consumption
+                label: "Compute energy usage (today)"
+              - state: sensor.storage_01_current_consumption
+                label: "Storage energy use (now)"
+              - state: sensor.storage_01_today_s_consumption
+                label: "Storage energy use (today)"
+    - Entertainment:
+        - Jellyfin:
+            icon: jellyfin.png
+            href: https://jelly.riff.cc/
+            description: Streaming media
+        - Jellyseerr:
+            icon: jellyseerr.png
+            href: https://requests.riff.cc/
+            description: Request media
+    - Management:
+        - Rancher:
+            icon: rancher.png
+            href: https://rancher.riff.cc/
+            description: Manage Kubernetes
+        - Proxmox CoreSVC:
+            icon: proxmox.png
+            href: https://coresvc.riff.cc:8006/
+            description: Manage Core Services Proxmox
+        - Proxmox Main:
+            icon: proxmox.png
+            href: https://proxmox.riff.cc:8006/
+            description: Manage Main Proxmox
+        - AWX Automation:
+            icon: awx.png
+            href: https://awx.riff.cc/
+            description: Ansible, for better or worse
+        - NetBox:
+            icon: netbox.png
+            href: https://ipam.riff.cc/
+            description: Network infrastructure management
+        - CheckMK:
+            icon: checkmk.png
+            href: http://monitoring.riff.cc/monitoring
+            description: Enterprise infrastruture monitoring
+    - Backups:
+        - Proxmox Backup Server:
+            icon: proxmox.png
+            href: https://pbs.per.riff.cc:8007/
+            description: Manage Proxmox backups
+
+  widgets:
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "Opal Cluster"
+        nodes:
+          show: false
+    - greeting:
+        text_size: x3
+        text: "Riff Lab was reinstalled from backups on March 1st 2024. Mind the dust! Sorry for any inconvenience. New servers coming soon!"
+    # show the kubernetes widget, with the cluster summary and individual nodes
+  kubernetes:
+    mode: cluster
+  settings:
+
+# The service account is necessary to allow discovery of other services
+serviceAccount:
+  create: true
+  name: homepage
+
+# This enables the service account to access the necessary resources
+enableRbac: true
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      # Example annotations to add Homepage to your Homepage!
+      cert-manager.io/cluster-issuer: "acme-prod"
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/name: "Homepage"
+      gethomepage.dev/description: "A dashboard for the Riff Lab"
+      gethomepage.dev/group: "Status and updates"
+      gethomepage.dev/icon: "homepage.png"
+    hosts:
+      - host: home.riff.cc
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+    - secretName: homepage-tls-secret
+      hosts:
+      - "home.riff.cc"

@@ -10,7 +10,7 @@ checkmk01.per.riff.cc
 unifi01.per.riff.cc
 netbird0[1:3].per.riff.cc
 acme-dns01.per.riff.cc
-gravity-ipam.per.riff.cc
+dhcp-kea01.per.riff.cc
 
 [staff]
 staff-eve.per.riff.cc

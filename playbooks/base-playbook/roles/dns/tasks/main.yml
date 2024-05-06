@@ -3,7 +3,7 @@
   package:
     name: systemd-resolved
     state: present
-  when: ansible_distribution == "Debian"
+  when: ansible_distribution == "Debian" and ansible_distribution_version >= '12'
 
 - name: Ensure systemd-resolved is configured with the local DNS servers
   community.general.ini_file:
@@ -16,6 +16,9 @@
     group: root
     state: present
   notify: Restart systemd-resolved
+  when: 
+    - ansible_distribution == "Debian" and ansible_distribution_version >= '12' or
+      ansible_distribution == "Ubuntu" and ansible_distribution_version >= '20.04'
 
 - name: Flush handlers
   meta: flush_handlers

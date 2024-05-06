@@ -3,7 +3,7 @@
   package:
     name: systemd-resolved
     state: present
-  when: ansible_os_family == "Debian"
+  when: ansible_distribution == "Debian"
 
 - name: Ensure systemd-resolved is configured with the local DNS servers
   community.general.ini_file:

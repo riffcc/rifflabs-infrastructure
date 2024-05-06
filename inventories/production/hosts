@@ -3,6 +3,9 @@
 [maintenance]
 robot01.riff.cc
 
+[monitoring]
+checkmk01.per.riff.cc
+
 [cluster_coresvc]
 coheed.per.riff.cc # coheed.mini.riff.cc in future
 cambria.per.riff.cc

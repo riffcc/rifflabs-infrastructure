@@ -6,6 +6,31 @@ robot01.riff.cc
 [monitoring]
 checkmk01.per.riff.cc
 
+[networking]
+unifi01.per.riff.cc
+netbird0[1:3].per.riff.cc
+acme-dns01.per.riff.cc
+gravity-ipam.per.riff.cc
+
+[staff]
+staff-eve.per.riff.cc
+staff-wings.per.riff.cc
+
+[cubefs]
+cubefs-master0[1:3].per.riff.cc
+cubefs-auth0[1:3].per.riff.cc
+cubefs-object0[1:3].per.riff.cc
+cubefs-clustermgr0[1:3].per.riff.cc
+
+[pegasus]
+pegasus0[1:3].per.riff.cc
+
+[jellyfin]
+jellyfin0[1:3].per.riff.cc
+
+[foreman]
+foreman01.per.riff.cc
+
 [cluster_coresvc]
 coheed.per.riff.cc # coheed.mini.riff.cc in future
 cambria.per.riff.cc

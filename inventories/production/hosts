@@ -1,4 +1,18 @@
 # Hosts will be managed in Netbox in future
+[checkmk_clients:children]
+maintenance
+monitoring
+networking
+loadbalancer
+staff
+cubefs
+pegasus
+jellyfin
+foreman
+cluster_coresvc
+cluster_opal
+cluster_wingslab
+cluster_highscale
 
 [maintenance]
 robot01.riff.cc
@@ -11,6 +25,9 @@ unifi01.per.riff.cc
 netbird0[1:3].per.riff.cc
 acme-dns01.per.riff.cc
 dhcp-kea01.per.riff.cc
+
+[loadbalancer]
+haproxy0[1:3].per.riff.cc
 
 [staff]
 staff-eve.per.riff.cc
@@ -56,5 +73,3 @@ vaxis.per.riff.cc
 opal-k8s-m0[1:3].per.riff.cc
 opal-fragment-[0:63].per.riff.cc
 
-[loadbalancer]
-haproxy0[1:3].per.riff.cc

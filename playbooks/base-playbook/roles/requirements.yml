@@ -2,3 +2,4 @@
 roles:
 - name: geerlingguy.ntp
   version: 2.3.3
+- name: mrlesmithjr.chrony

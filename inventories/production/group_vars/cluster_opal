@@ -1,3 +1,4 @@
 additional_root_public_keys:
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHJiwfBD8P0tf/8dZfzVjdI5MvU3l02KKHbM1225oDUW wings@jeff-awx-root
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxUXSoDT8i/eZC4FG26py56FrbNBQ/AIlwizb7/u4Qf alberto@ed25519
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILaTU8uTK5cul/PHR2aZN/mq9/wsBnTJW5oKNj3IUnaD albertorendo@status.com

@@ -9,6 +9,7 @@ cubefs
 pegasus
 jellyfin
 foreman
+pioneer
 cluster_coresvc
 cluster_opal
 cluster_wingslab
@@ -28,6 +29,9 @@ dhcp-kea01.per.riff.cc
 
 [loadbalancer]
 haproxy0[1:3].per.riff.cc
+
+[pioneer]
+pioneer0[1:3].per.riff.cc
 
 [staff]
 staff-eve.per.riff.cc

@@ -1,0 +1,8 @@
+---
+permit_root_login: "prohibit-password"
+
+additional_root_public_keys:
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHJiwfBD8P0tf/8dZfzVjdI5MvU3l02KKHbM1225oDUW wings@jeff-awx-root
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdCQnULmrviDYYHKI9WxDfdR6UOERD3Ok2/UU/ECKt lodge@lodge
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP+yM4jgXjHB/WQup/P3yyN0vSeqvo7/J6FeuT+rr165 lodge@lodge
+

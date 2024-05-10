@@ -77,3 +77,6 @@ vaxis.per.riff.cc
 opal-k8s-m0[1:3].per.riff.cc
 opal-fragment-[0:63].per.riff.cc
 
+[cluster_ruby]
+ruby-k8s-m0[1:3].k8s.riff.cc
+ruby-k8s-w[01:64].k8s.riff.cc

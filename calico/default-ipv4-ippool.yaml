@@ -10,4 +10,5 @@ spec:
   cidr: 10.42.0.0/16
   natOutgoing: true
   nodeSelector: all()
-  vxlanMode: CrossSubnet
+  vxlanMode: Never
+  ipipMode: Never
